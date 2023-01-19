@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ExpenseItem } from './models/expense-item';
+import {ExpenseCalculatorService} from './services/expense-calculator.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,11 @@ export class AppComponent {
 
   categoryId : number
 
+  totalExpenses : number = 0.00
+  averageExpenses : number = 0.00
+
+  constructor(private expenseCalculatorService : ExpenseCalculatorService) {}
+
   // Handler to update categoryId from category-select component event
   setCategoryId = (payload: any) => {
     this.categoryId = payload.id
@@ -27,5 +33,7 @@ export class AppComponent {
     payload.category_id = this.categoryId
 
     this.expenseItems.push(payload)
+    this.totalExpenses = this.expenseCalculatorService.computeAllExpenses(this.expenseItems)
+    this.averageExpenses = this.expenseCalculatorService.computeAverageExpenses(this.expenseItems)
   }
 }

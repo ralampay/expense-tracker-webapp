@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {ExpenseCalculatorService} from 'src/app/services/expense-calculator.service';
 import { ExpenseItem } from '../../models/expense-item';
 
 @Component({
@@ -7,6 +8,9 @@ import { ExpenseItem } from '../../models/expense-item';
   styleUrls: ['./expense-tracker-form.component.scss']
 })
 export class ExpenseTrackerFormComponent {
+
+  constructor(private expenseCalculatorService: ExpenseCalculatorService) {
+  }
 
   @Input() expenseItem: ExpenseItem = {
     name: "",
