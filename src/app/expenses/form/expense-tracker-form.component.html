@@ -1,0 +1,14 @@
+<label>
+Expense Item
+</label>
+<input type="text" class="form-control" [(ngModel)]="expenseItem.name"/>
+
+<label>
+Amount
+</label>
+<input type="text" class="form-control" [(ngModel)]="expenseItem.amount"/>
+
+<hr/>
+<button class="btn btn-primary" (click)="btnClicked()">
+    Add Expense
+</button>
