@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ExpenseItem } from './models/expense-item';
 import {ExpenseCalculatorService} from './services/expense-calculator.service';
+import {ExpenseItemsService} from './services/expense-items.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title: string = "Expense Tracker";
   description: string = "An expense tracker for personal use";
 
@@ -18,7 +19,18 @@ export class AppComponent {
   totalExpenses : number = 0.00
   averageExpenses : number = 0.00
 
-  constructor(private expenseCalculatorService : ExpenseCalculatorService) {}
+  constructor(
+    private expenseCalculatorService : ExpenseCalculatorService, 
+    private expenseItemsService : ExpenseItemsService
+  ) {}
+
+  ngOnInit() : void {
+    console.log("ngOnInit() fired for AppComponent")
+
+    this.expenseItemsService.getAll().subscribe((expenseItems) => {
+      this.expenseItems = expenseItems
+    })
+  }
 
   // Handler to update categoryId from category-select component event
   setCategoryId = (payload: any) => {
