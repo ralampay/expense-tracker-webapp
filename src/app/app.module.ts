@@ -13,11 +13,13 @@ import { CategorySelectComponent } from './expenses/category-select/category-sel
 import { IndexComponent } from './components/index/index.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { ShowComponent } from './expenses/show/show.component';
 
 const appRoutes : Routes = [
   { path: '', component: IndexComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'contact-us', component: ContactUsComponent }
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'expenses/:id', component: ShowComponent }
 ]
 
 
@@ -32,7 +34,8 @@ const appRoutes : Routes = [
     CategorySelectComponent,
     IndexComponent,
     AboutComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    ShowComponent
   ],
   imports: [
     BrowserModule,

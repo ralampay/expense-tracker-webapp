@@ -1,14 +1,19 @@
+<div class="mt-2"></div>
 <div class="card">
     <div class="card-body">
-        <h3>
-            {{expenseItem.name}}
-        </h3>
-        <h5 class="text-muted">
-            {{expenseItem.amount}}
-        </h5>
-        <hr/>
-        <h3>
-            Category Id: {{expenseItem.category_id}}
-        </h3>
+      <h3>
+          {{expenseItem.name}}
+      </h3>
+      <h5 class="text-muted">
+          {{expenseItem.amount}}
+      </h5>
+      <hr/>
+      <h3>
+          Category Id: {{expenseItem.category_id}}
+      </h3>
+        
+      <a routerLink="/expenses/{{expenseItem.id}}" class="btn btn-success w-100">
+        Show Item
+      </a>
     </div>
 </div>
