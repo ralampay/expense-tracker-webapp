@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ExpenseItem } from 'src/app/models/expense-item';
 
 @Component({
   selector: 'app-expense-item-show',
@@ -9,6 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 export class ShowComponent implements OnInit {
 
   id : number
+
+  expenseItem : ExpenseItem = {
+    name: '',
+    amount: 0.00
+  }
 
   constructor(private route : ActivatedRoute) {}
 

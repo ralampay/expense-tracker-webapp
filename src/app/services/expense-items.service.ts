@@ -25,4 +25,12 @@ export class ExpenseItemsService {
 
     return items
   }
+
+  getById = (id : number) : Observable<ExpenseItem> => {
+    let item : Observable<ExpenseItem>
+
+    item = this.http.get<ExpenseItem>(`${this.baseUrl}/expenses/${id}`, httpOptions)
+
+    return item
+  }
 }
