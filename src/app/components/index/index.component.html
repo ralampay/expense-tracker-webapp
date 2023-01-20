@@ -1,0 +1,48 @@
+<h1>
+  {{title}}
+</h1>
+
+<p>
+  {{description}}
+</p>
+
+<div class="card">
+  <div class="card-body">
+    <label>
+      Category
+    </label>
+    <app-category-select (categorySelectedEvent)="setCategoryId($event)"></app-category-select>
+  </div>
+</div>
+
+<app-expense-tracker-form 
+  (formEvent)="formEventHandler($event)"
+></app-expense-tracker-form>
+
+<hr/>
+<div *ngIf="expenseItems.length == 0">
+  <p>
+    No expense items found
+  </p>
+</div>
+
+<div *ngIf="expenseItems.length > 0">
+  <expense-item *ngFor="let expenseItem of expenseItems" [expenseItem]="expenseItem"></expense-item>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <h4>
+          Total Expenses: {{totalExpenses}}
+        </h4>
+      </div>
+      <div class="col">
+        <h4>
+          Average Expenses: {{averageExpenses}}
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
