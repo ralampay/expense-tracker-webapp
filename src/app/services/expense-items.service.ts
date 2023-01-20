@@ -33,4 +33,21 @@ export class ExpenseItemsService {
 
     return item
   }
+
+  save = (expenseItem : ExpenseItem) : Observable<ExpenseItem> => {
+    let item : Observable<ExpenseItem>
+
+    if(expenseItem.id) {
+      // Perform Update: PUT /expenses/:id
+      const url = `${this.baseUrl}/expenses/${expenseItem.id}`
+
+      item = this.http.put<ExpenseItem>(url, expenseItem, httpOptions)
+    } else {
+      // Perform Create: POST /expenses
+      
+      item = this.http.post<ExpenseItem>(`${this.baseUrl}/expenses`, expenseItem, httpOptions)
+    }
+
+    return item
+  }
 }

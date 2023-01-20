@@ -1,19 +1,31 @@
 {
-    "expenses": [
-        {
-            "id": 1,
-            "name": "Expense A",
-            "amount": 100.00
-        }, 
-        {
-            "id": 2,
-            "name": "Expense B",
-            "amount": 200.00
-        }, 
-        {
-            "id": 3,
-            "name": "Expense C",
-            "amount": 300.00
-        }
-    ]
+  "expenses": [
+    {
+      "id": 1,
+      "name": "Expense A",
+      "amount": 100
+    },
+    {
+      "id": 2,
+      "name": "Expense B",
+      "amount": 200
+    },
+    {
+      "id": 3,
+      "name": "Expense C",
+      "amount": 300
+    },
+    {
+      "name": "New Expense Item",
+      "amount": 300,
+      "category_id": 0,
+      "id": 4
+    },
+    {
+      "name": "New Expense Item 2",
+      "amount": 1200,
+      "category_id": 0,
+      "id": 5
+    }
+  ]
 }

@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import {ExpenseCalculatorService} from 'src/app/services/expense-calculator.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {ExpenseItemsService} from 'src/app/services/expense-items.service';
 import { ExpenseItem } from '../../models/expense-item';
 
 @Component({
@@ -9,7 +9,9 @@ import { ExpenseItem } from '../../models/expense-item';
 })
 export class ExpenseTrackerFormComponent {
 
-  constructor(private expenseCalculatorService: ExpenseCalculatorService) {
+  constructor(
+    private expenseItemsService : ExpenseItemsService
+  ) {
   }
 
   @Input() expenseItem: ExpenseItem = {
@@ -27,6 +29,9 @@ export class ExpenseTrackerFormComponent {
     let o = { ...this.expenseItem }
     console.log(this.expenseItem)
 
-    this.formEvent.emit(o)
+    this.expenseItemsService.save(o).subscribe((savedExpenseItem) => {
+      console.log(savedExpenseItem)
+      this.formEvent.emit(savedExpenseItem)
+    })
   }
 }
